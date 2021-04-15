@@ -33,9 +33,9 @@
     with_items: "{{ instances.instances }}"
   - name: Terminate protection - Enable
     amazon.aws.ec2:
-      aws_access_key: '{{ AWS_ACCESS_KEY_ID }}'
-      aws_secret_key: '{{ AWS_ACCESS_KEY }}'
-      security_token: '{{ AWS_SESSION_TOKEN }}'
+#      aws_access_key: '{{ AWS_ACCESS_KEY_ID }}'
+#      aws_secret_key: '{{ AWS_ACCESS_KEY }}'
+#      security_token: '{{ AWS_SESSION_TOKEN }}'
       region: '{{ REGION }}'
       state: 'running'
       termination_protection: 'yes'
