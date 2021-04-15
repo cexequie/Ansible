@@ -7,7 +7,7 @@
   connection: local
   gather_facts: no
   tasks:
-  - include_vars: env.yml
+#  - include_vars: env.yml
   - name: Gather facts of instances
     ec2_instance_info:
       aws_access_key: '{{ AWS_ACCESS_KEY_ID }}'
