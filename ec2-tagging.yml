@@ -1,0 +1,27 @@
+##############################################################################################
+### For this playbook you need to change the env.yml file to connect to the target account  ##
+### And change the tags to the ones you need                                                ##
+##############################################################################################
+---
+- hosts: localhost
+  gather_facts: yes
+  tasks:
+  - include_vars: env.yml
+  - name: Gather facts of instances
+    ec2_instance_info:
+      aws_access_key: '{{ AWS_ACCESS_KEY_ID }}'
+      aws_secret_key: '{{ AWS_ACCESS_KEY }}'
+      security_token: '{{ AWS_SESSION_TOKEN }}'
+      region: '{{ REGION }}'
+    register: instances
+  - name: Ensure tags are present on a resource
+    amazon.aws.ec2_tag:
+      aws_access_key: '{{ AWS_ACCESS_KEY_ID }}'
+      aws_secret_key: '{{ AWS_ACCESS_KEY }}'
+      security_token: '{{ AWS_SESSION_TOKEN }}'
+      region: '{{ REGION }}'
+      resource: '{{ item.instance_id }}'
+      state: absent
+      tags:                 ## Ensure to put all the tags that you need ##
+        env: Prod
+    with_items: "{{ instances.instances }}"
