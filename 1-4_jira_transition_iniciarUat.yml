@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Ticket Declarar Listo para pruebase
+    community.general.jira:
+      uri: '{{ server }}'
+      username: '{{ user }}'
+      password: '{{ passwd }}'
+      project: '{{ project }}'
+      issue: '{{ item.issueid }}'
+      operation: transition
+      status: 'Iniciar UAT'
+    with_items:
+      - '{{ tickets }}'
+    register: issue
