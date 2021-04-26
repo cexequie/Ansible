@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: yes
   tasks:
-  - name: Commentar un ticket
+  - name: Comentar un ticket
     community.general.jira:
       uri: '{{ server }}'
       username: '{{ user }}'
