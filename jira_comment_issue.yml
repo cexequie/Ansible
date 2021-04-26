@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  tasks:
+  - name: Commentar un ticket
+    community.general.jira:
+      uri: '{{ server }}'
+      username: '{{ user }}'
+      password: '{{ passwd }}'
+      project: '{{ project }}'
+      issue: '{{ item.issueid }}'
+      operation: comment
+      comment: '{{ comentario }}'
+    with_items:
+      - '{{ tickets }}'
+    register: issue
