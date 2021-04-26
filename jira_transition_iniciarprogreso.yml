@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: no
   tasks:
-  - name: Ticket Declarar Listo para pruebase
+  - name: Ticket Declarar Listo para pruebas
     community.general.jira:
       uri: '{{ server }}'
       username: '{{ user }}'
@@ -10,7 +10,7 @@
       project: '{{ project }}'
       issue: '{{ item.issueid }}'
       operation: transition
-      status: 'Iniciar pruebas'
+      status: 'Iniciar Progreso'
     with_items:
       - '{{ tickets }}'
     register: issue
