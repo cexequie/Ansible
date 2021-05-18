@@ -29,6 +29,8 @@
       tags:                 ## Ensure to put all the tags that you need ##
 #        env: Prod
         'Backup Diario': 'si'
+        'Backup Mensual': 'si'
+        'Backup Semanal': 'si'
         Monitoring: 'win'
     with_items: "{{ instances.instances }}"
   - name: Terminate protection - Enable
